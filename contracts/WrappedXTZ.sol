@@ -2,9 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract WrappedXTZ is ERC20, Ownable {
+contract WrappedXTZ is ERC20 {
     constructor(uint256 initialSupply) ERC20("WXTZ", "WXTZ") {
         _mint(msg.sender, initialSupply);
     }
@@ -17,7 +16,7 @@ contract WrappedXTZ is ERC20, Ownable {
     *
     * - `msg.sender` must be the token owner
     */
-    function mint(uint256 amount) public onlyOwner returns (bool) {
+    function mint(uint256 amount) public returns (bool) {
     _mint(_msgSender(), amount);
     return true;
     }
